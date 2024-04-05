@@ -16,6 +16,8 @@ buildNumber.properties
 .mvn/timing.properties
 
 ### Maven ###
+/mvnw
+/mvnw.cmd
 /.mvn/
 .mvn/wrapper/maven-wrapper.jar
 HELP.md
