@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: sponsored-ads
+
+campaign:
+  duration-in-days: 10
