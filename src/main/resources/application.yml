@@ -1,6 +1,16 @@
+server:
+  shutdown: "graceful"
+
 spring:
   application:
     name: sponsored-ads
+  lifecycle:
+    timeout-per-shutdown-phase: "60s"
+  datasource:
+    url: "jdbc:mysql://localhost"
+    username: "sponsored-ads-service-local"
+    password: "J3gfOpi94ShWmAOC3a6FFiles6s"
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
 
 campaign:
   duration-in-days: 10
