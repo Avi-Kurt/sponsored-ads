@@ -1,9 +1,8 @@
 package com.criteo.models.out;
 
-import com.criteo.models.internal.Campaign;
-import com.criteo.models.internal.Product;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
+import lombok.With;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -18,17 +17,7 @@ public class CampaignOutModel {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date endDate;
     private BigDecimal bid;
+    @With
     private List<ProductOutModel> products;
-
-    public static CampaignOutModel of(Campaign campaign, List<Product> campaignProducts) {
-
-        return CampaignOutModel.builder()
-                .name(campaign.getName())
-                .startDate(campaign.getStartDate())
-                .endDate(campaign.getEndDate())
-                .bid(campaign.getBid())
-                .products(ProductOutModel.of(campaignProducts))
-                .build();
-    }
 
 }
