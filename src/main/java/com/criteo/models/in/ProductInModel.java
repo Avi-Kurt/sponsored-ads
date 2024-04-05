@@ -2,9 +2,11 @@ package com.criteo.models.in;
 
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 
+@Getter
 @AllArgsConstructor
 public class ProductInModel {
 

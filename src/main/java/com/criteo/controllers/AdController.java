@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 @RequiredArgsConstructor
 public class AdController {
@@ -19,9 +21,9 @@ public class AdController {
     @GetMapping(path = "/ad/serve", produces = MediaType.APPLICATION_JSON_VALUE)
     public ProductOutModel serveAd(@RequestParam @NotBlank(message = "Ad category is missing.") String category) {
 
-        Product product = productService.getHighestBidActivePromotedProductByCategory(category);
-        if (product != null) {
-            return ProductOutModel.of(product);
+        Optional<Product> product = productService.getHighestBidActivePromotedProductByCategory(category);
+        if (product.isPresent()) {
+            return ProductOutModel.of(product.get());
         }
 
         return ProductOutModel.of(productService.getHighestBidActivePromotedProduct());
