@@ -1,12 +1,10 @@
 package com.criteo.models.internal;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
-@Getter
-@AllArgsConstructor
+@Data
 public class Product {
 
     private Long id;
