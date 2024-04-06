@@ -1,8 +1,8 @@
 package com.criteo.daos;
 
+import com.criteo.exceptions.FailedToCreateException;
 import com.criteo.models.in.ProductInModel;
 import com.criteo.models.internal.Product;
-import com.sun.jdi.InternalException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.DataClassRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -47,7 +47,7 @@ public class ProductDao {
             if (result == 1) {
                 effectedRows++;
             } else {
-                throw new InternalException("Unable to save Products Batch.");
+                throw new FailedToCreateException("Unable to save Products Batch.");
             }
         }
 
