@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: #toOverride
+    username: #toOverride
+    password: #toOverride
+  flyway:
+    url: #toOverride
+    user: #toOverride
+    password: #toOverride
