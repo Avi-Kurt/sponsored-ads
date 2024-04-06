@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: #toOverride
+    username: #toOverride
+    password: #toOverride
+  flyway:
+    url: #toOverride
+    user: #toOverride
+    password: #toOverride
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+  show-actuator: false
