@@ -5,6 +5,7 @@ import com.criteo.models.out.ProductOutModel;
 import com.criteo.services.ProductService;
 import com.sun.jdi.InternalException;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,9 @@ public class AdController {
 
     @GetMapping(path = "/ad/serve", produces = MediaType.APPLICATION_JSON_VALUE)
     public ProductOutModel serveAd(@RequestParam(name = "category")
-                                   @NotBlank(message = "Ad category is missing.") String category) {
+                                   @NotBlank(message = "Product category is missing.")
+                                   @Size(max = 255, message = "Product category cannot be longer than 255 characters.")
+                                   String category) {
 
         Optional<Product> product = productService.getHighestBidActivePromotedProductByCategory(category);
         if (product.isPresent()) {
