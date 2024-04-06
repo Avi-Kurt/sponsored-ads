@@ -29,7 +29,7 @@ public class ProductService {
         return productDao.findHighestBidActivePromotedProductByCategory(category);
     }
 
-    public Product getHighestBidActivePromotedProduct() {
+    public Optional<Product> getHighestBidActivePromotedProduct() {
         return productDao.findHighestBidActivePromotedProduct();
     }
 

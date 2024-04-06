@@ -3,6 +3,7 @@ package com.criteo.controllers;
 import com.criteo.models.internal.Product;
 import com.criteo.models.out.ProductOutModel;
 import com.criteo.services.ProductService;
+import com.sun.jdi.InternalException;
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -27,7 +28,12 @@ public class AdController {
             return ProductOutModel.of(product.get());
         }
 
-        return ProductOutModel.of(productService.getHighestBidActivePromotedProduct());
+        product = productService.getHighestBidActivePromotedProduct();
+        if (product.isPresent()) {
+            return ProductOutModel.of(product.get());
+        }
+
+        throw new InternalException("No data found.");
     }
 
 }
