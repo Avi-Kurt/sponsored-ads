@@ -19,7 +19,8 @@ public class AdController {
     private final ProductService productService;
 
     @GetMapping(path = "/ad/serve", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ProductOutModel serveAd(@RequestParam @NotBlank(message = "Ad category is missing.") String category) {
+    public ProductOutModel serveAd(@RequestParam(name = "category")
+                                   @NotBlank(message = "Ad category is missing.") String category) {
 
         Optional<Product> product = productService.getHighestBidActivePromotedProductByCategory(category);
         if (product.isPresent()) {

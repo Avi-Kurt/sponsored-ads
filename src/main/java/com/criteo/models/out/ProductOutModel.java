@@ -2,6 +2,8 @@ package com.criteo.models.out;
 
 import com.criteo.models.internal.Product;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.Collections;
@@ -9,6 +11,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+@Setter
+@Getter
 @Builder
 public class ProductOutModel {
 

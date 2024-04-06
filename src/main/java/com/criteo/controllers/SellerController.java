@@ -33,11 +33,14 @@ public class SellerController {
 
     @PostMapping(path = "/seller/create-campaign",
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public CampaignOutModel createCampaign(@RequestParam @NotBlank(message = "Campaign name is missing.") String name,
-                                           @RequestParam @NotNull(message = "Campaign startDate is missing.")
+    public CampaignOutModel createCampaign(@RequestParam(name = "name")
+                                           @NotBlank(message = "Campaign name is missing.") String name,
+                                           @RequestParam(name = "startDate")
+                                           @NotNull(message = "Campaign startDate is missing.")
                                            @FutureOrPresent(message = "Bad Campaign startDate.")
                                            @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") Date startDate,
-                                           @RequestParam @NotNull(message = "Campaign bid is missing.") BigDecimal bid,
+                                           @RequestParam(name = "bid")
+                                           @NotNull(message = "Campaign bid is missing.") BigDecimal bid,
                                            @RequestBody @NotEmpty(message = "Campaign products are missing.")
                                            @Valid List<ProductInModel> products) {
 
