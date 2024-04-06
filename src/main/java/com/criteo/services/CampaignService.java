@@ -1,9 +1,9 @@
 package com.criteo.services;
 
 import com.criteo.daos.CampaignDao;
+import com.criteo.exceptions.FailedToCreateException;
 import com.criteo.models.in.ProductInModel;
 import com.criteo.models.internal.Campaign;
-import com.sun.jdi.InternalException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -29,10 +29,10 @@ public class CampaignService {
 
         Date campaignEndDate = Date.from(startDate.toInstant().plus(campaignDurationInDays, ChronoUnit.DAYS));
         Campaign campaign = campaignDao.createCampaign(name, startDate, campaignEndDate, bid)
-                .orElseThrow(() -> new InternalException("Campaign creation failed."));
+                .orElseThrow(() -> new FailedToCreateException("Campaign creation failed."));
 
         productService.createProductsForCampaign(campaign.getId(), products)
-                .orElseThrow(() -> new InternalException("Products creation for Campaign failed."));
+                .orElseThrow(() -> new FailedToCreateException("Products creation for Campaign failed."));
 
         return campaign;
     }

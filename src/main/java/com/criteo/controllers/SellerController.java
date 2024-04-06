@@ -5,6 +5,7 @@ import com.criteo.models.internal.Campaign;
 import com.criteo.models.internal.Product;
 import com.criteo.models.out.CampaignOutModel;
 import com.criteo.models.out.ProductOutModel;
+import com.criteo.models.out.ValidResponse;
 import com.criteo.services.CampaignService;
 import com.criteo.services.ProductService;
 import jakarta.validation.Valid;
@@ -33,27 +34,27 @@ public class SellerController {
 
     @PostMapping(path = "/seller/create-campaign",
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public CampaignOutModel createCampaign(@RequestParam(name = "name")
-                                           @NotBlank(message = "Campaign name is missing.") String name,
-                                           @RequestParam(name = "startDate")
-                                           @NotNull(message = "Campaign startDate is missing.")
-                                           @FutureOrPresent(message = "Bad Campaign startDate.")
-                                           @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") Date startDate,
-                                           @RequestParam(name = "bid")
-                                           @NotNull(message = "Campaign bid is missing.") BigDecimal bid,
-                                           @RequestBody @NotEmpty(message = "Campaign products are missing.")
-                                           @Valid List<ProductInModel> products) {
+    public ValidResponse createCampaign(@RequestParam(name = "name")
+                                        @NotBlank(message = "Campaign name is missing.") String name,
+                                        @RequestParam(name = "startDate")
+                                        @NotNull(message = "Campaign startDate is missing.")
+                                        @FutureOrPresent(message = "Bad Campaign startDate.")
+                                        @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") Date startDate,
+                                        @RequestParam(name = "bid")
+                                        @NotNull(message = "Campaign bid is missing.") BigDecimal bid,
+                                        @RequestBody @NotEmpty(message = "Campaign products are missing.")
+                                        @Valid List<ProductInModel> products) {
 
         Campaign campaign = campaignService.createCampaign(name, startDate, bid, products);
         List<Product> campaignListOfProducts = productService.getProductsByCampaignId(campaign.getId());
 
-        return CampaignOutModel.builder()
+        return ValidResponse.of(CampaignOutModel.builder()
                 .name(campaign.getName())
                 .startDate(campaign.getStartDate())
                 .endDate(campaign.getEndDate())
                 .bid(campaign.getBid())
                 .build()
-                .withProducts(ProductOutModel.of(campaignListOfProducts));
+                .withProducts(ProductOutModel.of(campaignListOfProducts)));
     }
 
 }
