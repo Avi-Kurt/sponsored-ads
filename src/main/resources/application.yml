@@ -7,7 +7,7 @@ spring:
   lifecycle:
     timeout-per-shutdown-phase: "60s"
   datasource:
-    url: "jdbc:mysql://localhost"
+    url: "jdbc:mysql://localhost/sponsored-ads-db"
     username: "sponsored-ads-service-local"
     password: "J3gfOpi94ShWmAOC3a6FFiles6s"
     driver-class-name: "com.mysql.cj.jdbc.Driver"

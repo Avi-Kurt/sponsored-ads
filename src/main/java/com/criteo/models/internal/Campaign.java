@@ -1,13 +1,11 @@
 package com.criteo.models.internal;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Getter
-@AllArgsConstructor
+@Data
 public class Campaign {
 
     private Long id;
