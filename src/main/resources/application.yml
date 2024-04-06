@@ -29,3 +29,8 @@ spring:
 
 campaign:
   duration-in-days: 10
+
+springdoc:
+  swagger-ui:
+    filter: true
+    displayOperationId: true
