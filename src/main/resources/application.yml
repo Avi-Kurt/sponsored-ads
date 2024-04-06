@@ -1,5 +1,17 @@
 server:
+  port: 8080
   shutdown: "graceful"
+
+management:
+  server:
+    port: 8081
+  endpoints:
+    jmx:
+      exposure:
+        include: "*"
+    web:
+      exposure:
+        include: "*"
 
 spring:
   application:
@@ -34,3 +46,5 @@ springdoc:
   swagger-ui:
     filter: true
     displayOperationId: true
+  use-management-port: true
+  show-actuator: true
