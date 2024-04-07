@@ -1,21 +1,31 @@
+server:
+  port: 8080
+  shutdown: "graceful"
+
+campaign:
+  duration-in-days: 10
+
 spring:
-  application:
-    name: sponsored-ads-test
+  h2:
+    console:
+      enabled: true
   main:
     banner-mode: off
+  application:
+    name: sponsored-ads
   lifecycle:
     timeout-per-shutdown-phase: "60s"
   datasource:
-    url: "jdbc:mysql://localhost/sponsored-ads-db"
-    username: "sponsored-ads-service-local"
+    url: "jdbc:h2:mem:sponsored-ads-db;mode=mysql"
+    username: "sponsored-ads-service"
     password: "J3gfOpi94ShWmAOC3a6FFiles6s"
-    driver-class-name: "com.mysql.cj.jdbc.Driver"
+    driver-class-name: "org.h2.Driver"
   flyway:
     baseline-version: 1.0.0.00
     baseline-on-migrate: true
     baseline-description: sponsored-ads-db version 1.0.0.00
-    url: "jdbc:mysql://localhost"
-    user: "sponsored-ads-service-local"
+    url: "jdbc:h2:mem:sponsored-ads-db;mode=mysql"
+    user: "sponsored-ads-service"
     password: "J3gfOpi94ShWmAOC3a6FFiles6s"
     installed-by: Avi Kurt
     enabled: true
@@ -24,7 +34,4 @@ spring:
       schema_name: sponsored-ads-db
     locations: classpath:/flyway/db-migration
     create-schemas: true
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-campaign:
-  duration-in-days: 10
+    driver-class-name: "org.h2.Driver"

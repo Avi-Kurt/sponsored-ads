@@ -1,6 +1,13 @@
 # Sponsored Ads Project
 
-Sponsored ads project for Criteo.
+Sponsored ads project for Criteo. <br><br>
+NOTE:
+<br>
+Please pre-install JRE17 and MySQL server 8.0 <br>
+if you want to run the project locally. <br>
+or <br>
+Docker engine version 25.0.3 <br>
+if you want to run the project in a container.
 
 # JAR build
 
@@ -16,11 +23,20 @@ Currently, no Maven profiles included.
     Optional: swagger (enable swagger-ui)
     Optional: h2 (enable H2 in memory database)
 
-# Run
+# Run Locally
 
-Make sure that you have JRE 17 and MySQL server 8.0 pre-installed.
+1. Create user in database. (MySQL server 8.0)
 
-    java -jar -Dspring.profiles.active=swagger,h2
+
+    username: sponsored-ads-service
+    password: J3gfOpi94ShWmAOC3a6FFiles6s
+
+
+2. Run with JRE 17.
+
+
+    java -jar -Dspring.profiles.active=swagger
+
 
 # Swagger-UI
 
@@ -34,7 +50,7 @@ with the respected active spring profile.
 
 H2 in memory Database Console exposed on port 9006:
 
-    http://localhost:9006/h2-console
+    http://localhost:8080/h2-console
 
 with the respected active spring profile.
 
