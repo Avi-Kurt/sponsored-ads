@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: "jdbc:mysql://database/sponsored-ads-db"
+  flyway:
+    url: "jdbc:mysql://database"
