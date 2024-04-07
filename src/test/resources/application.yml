@@ -1,13 +1,6 @@
-server:
-  port: 8080
-  shutdown: "graceful"
-
-campaign:
-  duration-in-days: 10
-
 spring:
   application:
-    name: sponsored-ads
+    name: sponsored-ads-test
   lifecycle:
     timeout-per-shutdown-phase: "60s"
   datasource:
