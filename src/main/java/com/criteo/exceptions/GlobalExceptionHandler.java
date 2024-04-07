@@ -3,6 +3,7 @@ package com.criteo.exceptions;
 import com.criteo.constants.ResponseCode;
 import com.criteo.models.out.ValidResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,10 +15,17 @@ import org.springframework.web.method.annotation.HandlerMethodValidationExceptio
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ValidResponse handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+
+        log.debug("Bad Request: ", ex);
+        return ValidResponse.of("Bad request: Please check request parameters.", ResponseCode.BAD_REQUEST);
+    }
+
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public ValidResponse handleMissingServletRequestParameterException(MissingServletRequestParameterException ex) {
 
-        log.debug("Bad Request: {}", ex.getMessage());
+        log.debug("Bad Request: ", ex);
         return ValidResponse.of("Bad request: " + ex.getMessage(), ResponseCode.BAD_REQUEST);
     }
 

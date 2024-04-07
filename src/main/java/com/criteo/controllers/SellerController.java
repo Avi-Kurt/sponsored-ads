@@ -9,10 +9,7 @@ import com.criteo.models.out.ValidResponse;
 import com.criteo.services.CampaignService;
 import com.criteo.services.ProductService;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.FutureOrPresent;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
@@ -35,13 +32,16 @@ public class SellerController {
     @PostMapping(path = "/seller/create-campaign",
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ValidResponse createCampaign(@RequestParam(name = "name")
-                                        @NotBlank(message = "Campaign name is missing.") String name,
+                                        @Size(max = 255, message = "Product Name cannot be longer than 255 characters.")
+                                        @NotBlank(message = "Campaign Name is missing.") String name,
                                         @RequestParam(name = "startDate")
                                         @NotNull(message = "Campaign startDate is missing.")
-                                        @FutureOrPresent(message = "Bad Campaign startDate.")
+                                        @FutureOrPresent(message = "Bad Campaign startDate, should be in future.")
                                         @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") Date startDate,
                                         @RequestParam(name = "bid")
-                                        @NotNull(message = "Campaign bid is missing.") BigDecimal bid,
+                                        @DecimalMin(value = "0.1", message = "Campaign Bid cannot be less than 0.1.")
+                                        @DecimalMax(value = "99999.99", message = "Campaign Bid cannot be higher than 99999.99.")
+                                        @NotNull(message = "Campaign Bid is missing.") BigDecimal bid,
                                         @RequestBody @NotEmpty(message = "Campaign products are missing.")
                                         @Valid List<ProductInModel> products) {
 
