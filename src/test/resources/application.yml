@@ -1,6 +1,8 @@
 spring:
   application:
     name: sponsored-ads-test
+  main:
+    banner-mode: off
   lifecycle:
     timeout-per-shutdown-phase: "60s"
   datasource:
@@ -23,3 +25,6 @@ spring:
     locations: classpath:/flyway/db-migration
     create-schemas: true
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+campaign:
+  duration-in-days: 10
