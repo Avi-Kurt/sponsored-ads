@@ -8,6 +8,8 @@ campaign:
 spring:
   application:
     name: sponsored-ads
+  main:
+    banner-mode: off
   lifecycle:
     timeout-per-shutdown-phase: "60s"
   datasource:
