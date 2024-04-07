@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  database:
+    container_name: "database"
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'sponsored-ads-db'
+      MYSQL_USER: 'sponsored-ads-service'
+      MYSQL_PASSWORD: 'J3gfOpi94ShWmAOC3a6FFiles6s'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - sponsored-ads-db:/var/lib/mysql
+  backend:
+    depends_on:
+      - database
+    container_name: "backend"
+    build: .
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url":"jdbc:mysql://database/sponsored-ads-db",
+        "spring.flyway.url":"jdbc:mysql://database/sponsored-ads-db"
+      }'
+    volumes:
+      - sponsored-ads:/var/lib/backend
+    ports:
+      - "8081:8081"
+    expose:
+      - '8080:8080'
+      - '8081:8081'
+
+volumes:
+  sponsored-ads-db:
+  sponsored-ads:
