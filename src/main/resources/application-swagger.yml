@@ -1,0 +1,17 @@
+management:
+  server:
+    port: 8081
+  endpoints:
+    jmx:
+      exposure:
+        include: "*"
+    web:
+      exposure:
+        include: "*"
+
+springdoc:
+  swagger-ui:
+    filter: true
+    displayOperationId: true
+  use-management-port: true
+  show-actuator: true
