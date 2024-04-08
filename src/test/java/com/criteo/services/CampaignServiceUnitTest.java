@@ -72,8 +72,7 @@ class CampaignServiceUnitTest {
                         TestConstants.campaign.getStartDate(),
                         TestConstants.campaign.getBid(),
                         TestConstants.productInModelsList),
-                TestConstants.campaign
-        );
+                TestConstants.campaign);
     }
 
     @Test
@@ -120,8 +119,7 @@ class CampaignServiceUnitTest {
                         TestConstants.campaign.getStartDate(),
                         TestConstants.campaign.getBid(),
                         null),
-                TestConstants.campaign
-        );
+                TestConstants.campaign);
     }
 
 }
