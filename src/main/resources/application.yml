@@ -1,6 +1,8 @@
 server:
   port: 8080
   shutdown: "graceful"
+  servlet:
+    context-path: /criteo/api/v1
 
 campaign:
   duration-in-days: 10

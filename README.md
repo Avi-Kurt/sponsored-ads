@@ -33,7 +33,7 @@ Run with JRE 17.
 
 SwaggerUI exposed on management port 8081:
 
-    http://localhost:8081/actuator/swagger-ui/index.html
+    http://localhost:8081/criteo/api/v1/management/actuator/swagger-ui/index.html
 
 with the respected active spring profile.
 
@@ -41,7 +41,7 @@ with the respected active spring profile.
 
 H2 in memory Database Console exposed on port 9006:
 
-    http://localhost:8080/h2-console
+    http://localhost:8080/criteo/api/v1/management/h2-console
 
 with the respected active spring profile.
 
@@ -50,7 +50,7 @@ with the respected active spring profile.
 Create campaign request:
 
     curl -X 'POST' \
-    'http://localhost:8080/seller/create-campaign?name=snacks&startDate=2024-04-14T12%3A30%3A22&bid=400' \
+    'http://localhost:8080/criteo/api/v1/seller/create-campaign?name=snacks&startDate=2024-04-14T12%3A30%3A22&bid=400' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '[
@@ -117,7 +117,7 @@ Create campaign response:
 Serve ad request:
 
     curl -X 'GET' \
-        'http://localhost:8080/ad/serve?category=snacks' \
+        'http://localhost:8080/criteo/api/v1/ad/serve?category=snacks' \
         -H 'accept: application/json' 
 
 Serve ad response:
