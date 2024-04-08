@@ -23,7 +23,7 @@ public class CampaignDao {
 
     private Optional<Campaign> findById(Long id) {
 
-        return namedParameterJdbcTemplate.query("select * from campaigns where id = :id",
+        return namedParameterJdbcTemplate.query("select * from `sponsored-ads-db`.campaigns where id = :id",
                         Map.of("id", id),
                         DataClassRowMapper.newInstance(Campaign.class))
                 .stream().findAny();
@@ -33,7 +33,7 @@ public class CampaignDao {
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update("""
-                        insert into campaigns (name, start_date, end_date, bid)
+                        insert into `sponsored-ads-db`.campaigns (name, start_date, end_date, bid)
                         values (:name, :startDate, :endDate, :bid)""",
                 new MapSqlParameterSource()
                         .addValue("name", name)

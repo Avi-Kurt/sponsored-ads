@@ -38,8 +38,8 @@ public class ProductDao {
         });
 
         int[] insertResults = namedParameterJdbcTemplate.batchUpdate("""
-                        insert into products (campaign_id, title, category, price, serial_number)
-                        values (:campaignId, :title, :category, :price, UUID())""",
+                        insert into `sponsored-ads-db`.products (campaign_id, title, category, price, serial_number)
+                        values (:campaignId, :title, :category, :price, UUID());""",
                 bach.toArray(new SqlParameterSource[bach.size()]));
         bach.clear();
 
@@ -57,7 +57,7 @@ public class ProductDao {
     public List<Product> findProductsByCampaignId(Long campaignId) {
 
         return namedParameterJdbcTemplate.query("""
-                        select * from products where campaign_id = :campaignId;""",
+                        select * from `sponsored-ads-db`.products where campaign_id = :campaignId;""",
                 Map.of("campaignId", campaignId),
                 DataClassRowMapper.newInstance(Product.class));
     }
@@ -65,8 +65,8 @@ public class ProductDao {
     public Optional<Product> findHighestBidActivePromotedProductByCategory(String category) {
 
         return namedParameterJdbcTemplate.query("""
-                        select products.* from products
-                            inner join campaigns
+                        select products.* from `sponsored-ads-db`.products
+                            inner join `sponsored-ads-db`.campaigns
                                 on products.campaign_id = campaigns.id
                         where end_date >= now()
                             and category = :category
@@ -79,10 +79,10 @@ public class ProductDao {
     public Optional<Product> findHighestBidActivePromotedProduct() {
 
         return namedParameterJdbcTemplate.query("""
-                        select * from products
-                            where campaign_id in (SELECT c.id FROM campaigns c
+                        select * from `sponsored-ads-db`.products
+                            where campaign_id in (SELECT c.id FROM `sponsored-ads-db`.campaigns c
                                                     WHERE c.end_date >= now()
-                                                    and c.bid = (select max(subc.bid) from campaigns subc))
+                                                    and c.bid = (select max(subc.bid) from `sponsored-ads-db`.campaigns subc))
                         limit 1;""",
                 DataClassRowMapper.newInstance(Product.class)).stream().findAny();
     }
