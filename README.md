@@ -32,7 +32,7 @@ Create user in database. (MySQL server 8.0)
 
 Run with JRE 17.
 
-    java -jar -Dspring.profiles.active=swagger
+    java -jar "-Dspring.profiles.active=swagger" .\sponsored-ads-0.0.1.jar
 
 # Swagger-UI
 
