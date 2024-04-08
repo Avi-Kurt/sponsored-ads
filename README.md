@@ -25,11 +25,6 @@ Currently, no Maven profiles included.
 
 # Run Locally
 
-Create user in database. (MySQL server 8.0)
-
-    username: sponsored-ads-service
-    password: J3gfOpi94ShWmAOC3a6FFiles6s
-
 Run with JRE 17.
 
     java -jar "-Dspring.profiles.active=swagger" .\sponsored-ads-0.0.1.jar
