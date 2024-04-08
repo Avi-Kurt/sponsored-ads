@@ -1,6 +1,7 @@
 management:
   server:
     port: 8081
+    base-path: /criteo/api/v1/management
   endpoints:
     jmx:
       exposure:

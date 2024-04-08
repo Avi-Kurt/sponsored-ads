@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @OpenAPIDefinition(info = @Info(title = "Sponsored Ads API", version = "v1.0"),
-        servers = {@Server(url = "http://localhost:8080/", description = "Local"),
-                @Server(url = "https://staging-server.com/", description = "Staging"),
-                @Server(url = "https://production-server.com/", description = "Production")})
+        servers = {@Server(url = "http://localhost:8080/criteo/api/v1", description = "Local"),
+                @Server(url = "https://staging-server.com/criteo/api/v1", description = "Staging"),
+                @Server(url = "https://production-server.com/criteo/api/v1", description = "Production")})
 @SecurityScheme(
         type = SecuritySchemeType.HTTP
 )
