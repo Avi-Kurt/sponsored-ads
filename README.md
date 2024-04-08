@@ -52,32 +52,87 @@ with the respected active spring profile.
 
 # API request examples
 
-Create campaign
+Create campaign request:
 
     curl -X 'POST' \
-    'http://localhost:8080/seller/create-campaign?name=fruits%20ads&startDate=2024-06-20T12%3A30%3A10&bid=100' \
+    'http://localhost:8080/seller/create-campaign?name=snacks&startDate=2024-04-14T12%3A30%3A22&bid=400' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '[
             {
-                "title": "banana",
-                "category": "fruits",
-                "price": 10.5
+                "title": "bamba",
+                "category": "snacks",
+                "price": 20.0
             },
             {
-                "title": "apple",
-                "category": "fruits",
-                "price": 5.5
+                "title": "cheetos",
+                "category": "snacks",
+                "price": 22.5
             },
             {
-                "title": "orange",
-                "category": "fruits",
-                "price": 8.5
+                "title": "chocolate",
+                "category": "snacks",
+                "price": 30.1
+            },
+            {
+                "title": "krembo",
+                "category": "snacks",
+                "price": 8.9
             }
-        ]'
+    ]'
 
-Serve ad
+Create campaign response:
+
+    {
+        "payload": {
+        "name": "snacks",
+        "startDate": "2024-04-14 12:30:22",
+        "endDate": "2024-04-24 12:30:22",
+        "bid": 400,
+        "products": [
+                        {
+                            "title": "bamba",
+                            "category": "snacks",
+                            "price": 20,
+                            "serialNumber": "88fbd51e-f5ac-11ee-b6e2-00e04c682031"
+                        },
+                        {
+                            "title": "cheetos",
+                            "category": "snacks",
+                            "price": 22.5,
+                            "serialNumber": "88fbdd80-f5ac-11ee-b6e2-00e04c682031"
+                        },
+                        {
+                            "title": "chocolate",
+                            "category": "snacks",
+                            "price": 30.1,
+                            "serialNumber": "88fbec75-f5ac-11ee-b6e2-00e04c682031"
+                        },
+                        {
+                            "title": "krembo",
+                            "category": "snacks",
+                            "price": 8.9,
+                            "serialNumber": "88fbf9a7-f5ac-11ee-b6e2-00e04c682031"
+                        }
+                    ]
+        },
+        "code": 0
+    }
+
+Serve ad request:
 
     curl -X 'GET' \
-        'http://localhost:8080/ad/serve?category=fruits' \
+        'http://localhost:8080/ad/serve?category=snacks' \
         -H 'accept: application/json' 
+
+Serve ad response:
+
+    {
+        "payload": {
+            "title": "bamba",
+            "category": "snacks",
+            "price": 20,
+            "serialNumber": "88fbd51e-f5ac-11ee-b6e2-00e04c682031"
+        },
+        "code": 0
+    }
