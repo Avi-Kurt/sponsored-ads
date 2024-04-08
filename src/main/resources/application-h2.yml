@@ -4,8 +4,8 @@ spring:
       enabled: true
       path: /management/h2-console
   datasource:
-    url: "jdbc:h2:mem:sponsored-ads-db;mode=mysql"
+    url: "jdbc:h2:mem:sponsored-ads-db;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=FALSE;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL"
     driver-class-name: "org.h2.Driver"
   flyway:
-    url: "jdbc:h2:mem:sponsored-ads-db;mode=mysql"
+    url: "jdbc:h2:mem:sponsored-ads-db"
     driver-class-name: "org.h2.Driver"
