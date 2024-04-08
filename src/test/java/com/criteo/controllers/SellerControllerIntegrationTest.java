@@ -26,7 +26,7 @@ import java.util.Date;
 import java.util.List;
 
 @WebMvcTest(SellerController.class)
-class SellerControllerUnitTest {
+class SellerControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
