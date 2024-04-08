@@ -32,6 +32,6 @@ spring:
     schemas: sponsored-ads-db
     placeholders:
       schema_name: sponsored-ads-db
-    locations: classpath:/flyway/db-migration
+    locations: classpath:/flyway/db-migration, classpath:/test/flyway/db-migration/dummy-data
     create-schemas: true
     driver-class-name: "org.h2.Driver"
