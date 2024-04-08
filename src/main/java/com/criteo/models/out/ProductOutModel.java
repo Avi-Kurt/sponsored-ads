@@ -4,6 +4,7 @@ import com.criteo.models.internal.Product;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.util.Collections;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 @Setter
 @Getter
 @Builder
+@ToString
 public class ProductOutModel {
 
     private String title;

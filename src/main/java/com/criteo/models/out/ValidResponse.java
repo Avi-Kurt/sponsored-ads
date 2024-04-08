@@ -4,7 +4,9 @@ package com.criteo.models.out;
 import com.criteo.constants.ResponseCode;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
+import lombok.ToString;
 
+@ToString
 public class ValidResponse<T> {
 
     @Getter
