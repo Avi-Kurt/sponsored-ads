@@ -1,10 +1,7 @@
 package com.criteo.models.out;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.With;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,6 +10,7 @@ import java.util.List;
 @Setter
 @Getter
 @Builder
+@ToString
 public class CampaignOutModel {
 
     private String name;

@@ -22,6 +22,8 @@ class AdControllerUnitTest {
 
         Mockito.when(productService.getHighestBidActivePromotedProductByCategory(TestConstants.testCategory))
                 .thenReturn(Optional.of(TestConstants.product1));
+        Mockito.when(productService.getHighestBidActivePromotedProductByCategory(TestConstants.tooLongText))
+                .thenReturn(Optional.of(TestConstants.product1));
         Mockito.when(productService.getHighestBidActivePromotedProduct())
                 .thenReturn(Optional.of(TestConstants.product2));
     }
@@ -45,6 +47,13 @@ class AdControllerUnitTest {
 
         Assertions.assertEquals(String.valueOf(ValidResponse.of(ProductOutModel.of(TestConstants.product2))),
                 String.valueOf(adController.serveAd(null)));
+    }
+
+    @Test
+    void shouldServeByCategoryEvenWithTooLongText() {
+
+        Assertions.assertEquals(String.valueOf(ValidResponse.of(ProductOutModel.of(TestConstants.product1))),
+                String.valueOf(adController.serveAd(TestConstants.tooLongText)));
     }
 
 }
