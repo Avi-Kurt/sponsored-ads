@@ -30,7 +30,6 @@ public class CampaignDao {
     }
 
     public Optional<Campaign> createCampaign(String name, Date startDate, Date endDate, BigDecimal bid) {
-
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update("""
                         insert into `sponsored-ads-db`.campaigns (name, start_date, end_date, bid)
