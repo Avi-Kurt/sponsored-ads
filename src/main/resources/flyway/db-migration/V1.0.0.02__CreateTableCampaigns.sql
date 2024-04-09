@@ -6,5 +6,6 @@ create table if not exists campaigns
     end_date   datetime      not null,
     bid        decimal(7, 2) not null,
 
-    INDEX end_date_bid_id_index (end_date desc, bid desc, id desc)
+    INDEX bid_id_index (bid desc, id),
+    INDEX start_date_end_date_id_index (start_date desc, end_date desc, id desc)
 );

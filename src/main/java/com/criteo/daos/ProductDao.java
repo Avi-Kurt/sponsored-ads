@@ -68,7 +68,8 @@ public class ProductDao {
                         select products.* from `sponsored-ads-db`.products
                             inner join `sponsored-ads-db`.campaigns
                                 on products.campaign_id = campaigns.id
-                        where end_date >= now()
+                            where start_date >= now()
+                            and end_date < now()
                             and category = :category
                         order by bid desc
                         limit 1;""",
@@ -80,8 +81,9 @@ public class ProductDao {
 
         return namedParameterJdbcTemplate.query("""
                         select * from `sponsored-ads-db`.products
-                            where campaign_id in (SELECT c.id FROM `sponsored-ads-db`.campaigns c
-                                                    WHERE c.end_date >= now()
+                            where campaign_id in (select c.id from `sponsored-ads-db`.campaigns c
+                                                    where c.start_date >= now()
+                                                    and c.end_date < now()
                                                     and c.bid = (select max(subc.bid) from `sponsored-ads-db`.campaigns subc))
                         limit 1;""",
                 DataClassRowMapper.newInstance(Product.class)).stream().findAny();
