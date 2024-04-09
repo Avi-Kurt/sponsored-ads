@@ -25,9 +25,15 @@ Currently, no Maven profiles included.
 
 # Run Locally
 
-Run with JRE 17.
+Run with JRE 17:
 
     java -jar "-Dspring.profiles.active=swagger" .\sponsored-ads-0.0.1.jar
+
+# Run with Docker
+
+Run with Docker engine 25.0.3:
+
+    docker-compose.yml
 
 # Swagger-UI
 
