@@ -6,7 +6,7 @@
 
     <groupId>com.criteo</groupId>
     <artifactId>sponsored-ads</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>sponsored-ads</name>
     <description>Sponsored ads project for criteo</description>
 
